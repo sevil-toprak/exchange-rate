@@ -4,3 +4,39 @@ server:
 spring:
   application:
     name: exchange-rate
+
+  datasource:
+    url: jdbc:h2:mem:exchange-rate
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+
+exchange:
+  api:
+    key: ${EXCHANGE_API_KEY:bcdcbdb1752894c70152b0820a685e9d}
+    url: ${EXCHANGE_API_URL:https://api.currencylayer.com/}
+
+logging:
+  level:
+    org.springframework.web.client.RestClient: DEBUG
+    org.springframework.http.client: DEBUG
+    org.springframework.web: DEBUG
+    org.apache.http: DEBUG
+    org.apache.http.wire: DEBUG
+    org.springframework.web.client.HttpClientErrorException: DEBUG
+
+
+
+
+

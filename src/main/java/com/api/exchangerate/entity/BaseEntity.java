@@ -27,10 +27,6 @@ public abstract class BaseEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
-
     @Version
     private Long version;
 }

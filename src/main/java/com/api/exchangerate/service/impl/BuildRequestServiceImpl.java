@@ -21,6 +21,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
+import java.util.Currency;
 import java.util.Map;
 
 @Service
@@ -39,13 +40,15 @@ public class BuildRequestServiceImpl implements BuildRequestService {
 
     @Override
     public ExchangeApiConvertResponse buildExchangeCurrencyRequest(ExchangeRateRequest request) {
-        String url = buildUrl(request.getSource().getCurrencyCode(), request.getTarget().getCurrencyCode(), BigDecimal.ONE);
+        String url = buildUrl(Currency.getInstance(request.getSource()).getCurrencyCode(),
+                Currency.getInstance(request.getTarget()).getCurrencyCode(), BigDecimal.ONE);
         return callConvertEndpoint(url);
     }
 
     @Override
     public ExchangeApiConvertResponse buildConvertCurrencyRequest(ConvertRateRequest request) {
-        String url = buildUrl(request.getSource().getCurrencyCode(), request.getTarget().getCurrencyCode(), request.getAmount());
+        String url = buildUrl(Currency.getInstance(request.getSource()).getCurrencyCode(),
+                Currency.getInstance(request.getTarget()).getCurrencyCode(), request.getAmount());
         return callConvertEndpoint(url);
     }
 

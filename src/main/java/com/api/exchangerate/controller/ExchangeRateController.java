@@ -9,10 +9,8 @@ import com.api.exchangerate.service.business.ExchangeRateBusinessService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/exchange-rate")
@@ -22,20 +20,20 @@ public class ExchangeRateController {
     private final ExchangeRateBusinessService businessService;
 
     @GetMapping("/exchange")
-    public ResponseEntity<ExchangeRateResponse> exchangeCurrencies(@Valid ExchangeRateRequest request) {
+    public ResponseEntity<ExchangeRateResponse> exchangeCurrency(@Valid ExchangeRateRequest request) {
         ExchangeRateResponse response = businessService.exchangeCurrency(request);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/convert")
-    public ResponseEntity<ConvertRateResponse> convertCurrencies(@Valid ConvertRateRequest request) {
+    public ResponseEntity<ConvertRateResponse> convertCurrency(@Valid ConvertRateRequest request) {
         ConvertRateResponse response = businessService.convertCurrency(request);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/bulk-convert")
-    public ResponseEntity<BulkConvertRateResponse> bulkConvertCurrencies() {
-        BulkConvertRateResponse response = businessService.bulkConvertCurrency();
+    public ResponseEntity<BulkConvertRateResponse> bulkConvertCurrency(@RequestParam("file") MultipartFile file) {
+            BulkConvertRateResponse response = businessService.bulkConvertCurrency(file);
         return ResponseEntity.ok(response);
     }
 

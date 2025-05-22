@@ -52,6 +52,7 @@ public class ExchangeRateBusinessService {
 
         // It should be called Async method, and it should be used chunk/buffer input for processing.
         // It can be added like a createFileParserContext method, or it can be added ParserEnum file
+        // Exchange rate history can be added.
         FileParser<BulkConvertRow> parser = fileParserContext.getParserByType(PARSER_TYPE);
 
         try (var input = file.getInputStream()) {

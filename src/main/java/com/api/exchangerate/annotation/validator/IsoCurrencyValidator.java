@@ -11,9 +11,11 @@ public class IsoCurrencyValidator
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext ctx) {
-//        if (value == null) {
-//            return true;
-//        }
+        // It returns true because of the not null validation is on the request class.
+        if (value == null || value.isBlank()) {
+            return true;
+        }
+
         try {
             Currency.getInstance(value.toUpperCase());
             return true;

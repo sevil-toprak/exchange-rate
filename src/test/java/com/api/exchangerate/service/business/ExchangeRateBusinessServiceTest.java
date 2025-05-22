@@ -82,7 +82,7 @@ class ExchangeRateBusinessServiceTest {
 
         BulkConvertRow row = new BulkConvertRow("USD", "EUR", BigDecimal.valueOf(0.8825));
 
-        BulkConvertRateResponse mockResponse = new BulkConvertRateResponse(List.of(), 10);
+        BulkConvertRateResponse mockResponse = new BulkConvertRateResponse(List.of(), 10, 1, 1);
 
         when(fileParserContext.getParserByType("bulkCsvConvert")).thenReturn(fileParser);
         when(fileParser.parse(any())).thenReturn(List.of(row));

@@ -83,12 +83,12 @@ class ExchangeRateControllerTest {
                         "source,target,amount\nUSD,TRY,100".getBytes());
 
         Mockito.when(businessService.bulkConvertCurrency(any()))
-                .thenReturn(new BulkConvertRateResponse(List.of(), 1));
+                .thenReturn(new BulkConvertRateResponse(List.of(), 1, 1, 2));
 
         // When & Then
         mockMvc.perform(multipart("/api/exchange-rate/bulk-convert").file(csv))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.count").value(1));
+                .andExpect(jsonPath("$.totalCount").value(1));
     }
 
     @Test

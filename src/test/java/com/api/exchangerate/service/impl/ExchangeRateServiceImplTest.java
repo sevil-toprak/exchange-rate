@@ -90,7 +90,7 @@ class ExchangeRateServiceImplTest {
         BulkConvertRateResponse result = service.bulkConvertCurrency(List.of(req1, req2));
 
         // Then
-        assertEquals(2, result.count());
+        assertEquals(2, result.totalCount());
         assertEquals(2, result.rows().size());
     }
 

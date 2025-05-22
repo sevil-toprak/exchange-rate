@@ -13,6 +13,7 @@ import com.api.exchangerate.service.spec.BuildRequestService;
 import com.api.exchangerate.service.spec.ExchangeRateService;
 import com.api.exchangerate.util.TransactionIdGeneratorUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,7 @@ import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ExchangeRateServiceImpl implements ExchangeRateService {
 
     private final BuildRequestService buildRequestService;
@@ -46,18 +48,26 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
     @Override
     public BulkConvertRateResponse bulkConvertCurrency(List<ConvertRateRequest> requestList) {
         List<ConvertRateResponse> responseList = new ArrayList<>();
+        int failedCount = 0;
         for (ConvertRateRequest request : requestList) {
-            ConvertRateResponse convertRateResponse = convertCurrency(request);
-            responseList.add(convertRateResponse);
+            try {
+                ConvertRateResponse convertRateResponse = convertCurrency(request);
+                responseList.add(convertRateResponse);
+            } catch (Exception e) {
+                failedCount ++;
+                log.error("Bulk process error when integrating with external api service", e);
+            }
         }
 
         return new BulkConvertRateResponse(
                 responseList,
-                requestList.size()
+                requestList.size(),
+                requestList.size() - failedCount,
+                failedCount
         );
     }
 
-    private static void validateResponseNotNull(ExchangeApiConvertResponse apiResponse) {
+    private void validateResponseNotNull(ExchangeApiConvertResponse apiResponse) {
         if (Objects.isNull(apiResponse) || !apiResponse.success()) {
             throw new BaseException(ErrorCode.INTERNAL_SERVER_ERROR,
                     ErrorMessages.API_INTEGRATION_ERROR,

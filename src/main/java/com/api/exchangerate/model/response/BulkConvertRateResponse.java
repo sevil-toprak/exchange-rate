@@ -4,6 +4,8 @@ import java.util.List;
 
 public record BulkConvertRateResponse(
         List<ConvertRateResponse> rows,
-        int count
+        int totalCount,
+        int successcount,
+        int failedcoun
 ) {
 }

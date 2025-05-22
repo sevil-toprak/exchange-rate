@@ -1,9 +1,9 @@
 package com.api.exchangerate.model.request;
 
 import com.api.exchangerate.annotation.IsoCurrency;
+import com.api.exchangerate.exception.constants.ErrorMessages;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-
-import java.util.Currency;
 
 @Getter
 @Setter
@@ -12,12 +12,12 @@ import java.util.Currency;
 @AllArgsConstructor
 public class ExchangeRateRequest {
 
-    //    @NotNull(message = ErrorMessages.INVALID_REQUEST_MISSING_CURRENCY_PARAMETER)
+    @NotBlank(message = ErrorMessages.INVALID_REQUEST_MISSING_CURRENCY_PARAMETER)
     @IsoCurrency
-    private Currency source;
+    private String source;
 
-    //    @NotNull(message = ErrorMessages.INVALID_REQUEST_MISSING_CURRENCY_PARAMETER)
+    @NotBlank(message = ErrorMessages.INVALID_REQUEST_MISSING_CURRENCY_PARAMETER)
     @IsoCurrency
-    private Currency target;
+    private String target;
 
 }

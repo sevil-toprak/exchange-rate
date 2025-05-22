@@ -1,4 +1,11 @@
 package com.api.exchangerate.model.response;
 
-public record BulkConvertRateResponse() {
+import java.util.List;
+
+public record BulkConvertRateResponse(
+        List<ConvertRateResponse> rows,
+        int totalCount,
+        int successcount,
+        int failedcoun
+) {
 }

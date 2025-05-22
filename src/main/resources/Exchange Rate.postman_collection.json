@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "8f78cc3d-25bc-40f8-9a16-04682b27e171",
+		"name": "Exchange Rate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2709604"
+	},
+	"item": [
+		{
+			"name": "Exchange Currency",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/exchange-rate/exchange?source=USD&target=EUR",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"exchange-rate",
+						"exchange"
+					],
+					"query": [
+						{
+							"key": "source",
+							"value": "USD"
+						},
+						{
+							"key": "target",
+							"value": "EUR"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Convert Currency",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/exchange-rate/convert?source=USD&target=EUR&amount=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"exchange-rate",
+						"convert"
+					],
+					"query": [
+						{
+							"key": "source",
+							"value": "USD"
+						},
+						{
+							"key": "target",
+							"value": "EUR"
+						},
+						{
+							"key": "amount",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter History",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/exchange-rate/history?transactionId=a55eb7ac-7911-42dd-a4dd-c0a8019104a2&startDate=2025-05-20 15:06:53.519371&limit=20&page=0&endDate=2025-05-20 15:06:53.519371",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"exchange-rate",
+						"history"
+					],
+					"query": [
+						{
+							"key": "transactionId",
+							"value": "a55eb7ac-7911-42dd-a4dd-c0a8019104a2"
+						},
+						{
+							"key": "startDate",
+							"value": "2025-05-20 15:06:53.519371"
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "endDate",
+							"value": "2025-05-20 15:06:53.519371"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk Convert Currency",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/exchange-rate/convert?source=USD&target=EUR&amount=222",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"exchange-rate",
+						"convert"
+					],
+					"query": [
+						{
+							"key": "source",
+							"value": "USD"
+						},
+						{
+							"key": "target",
+							"value": "EUR"
+						},
+						{
+							"key": "amount",
+							"value": "222"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency Layer - Get List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.currencylayer.com/list?access_key=bcdcbdb1752894c70152b0820a685e9d",
+					"protocol": "https",
+					"host": [
+						"api",
+						"currencylayer",
+						"com"
+					],
+					"path": [
+						"list"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "bcdcbdb1752894c70152b0820a685e9d"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

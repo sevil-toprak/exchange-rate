@@ -24,7 +24,7 @@ spring:
 
 exchange:
   api:
-    key: ${EXCHANGE_API_KEY:bcdcbdb1752894c70152b0820a685e9d}
+    key: ${EXCHANGE_API_KEY:eb9f836db1773e1e086b6cf65d7f8c07}
     url: ${EXCHANGE_API_URL:https://api.currencylayer.com/}
 
 logging:

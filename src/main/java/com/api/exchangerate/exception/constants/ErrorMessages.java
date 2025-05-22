@@ -10,6 +10,10 @@ public final class ErrorMessages {
     public static final String INTERNAL_SERVER_ERROR = "Internal server error.";
     public static final String API_INTEGRATION_ERROR = "Api integration error.";
     public static final String CURRENCY_CODE_NOT_FOUND = "Currency code not found.";
+    public static final String INVALID_CSV_FILE = "Invalid csv file format.";
+    public static final String INVALID_CSV_ROW_FORMAT = "Invalid csv row format.";
+    public static final String FILE_IS_EMPTY = "Uploaded file is empty.";
+    public static final String UNSUPPORTED_PARSER_TYPE = "Unsupported parser type.";
 
     // Validation
     public static final String INVALID_REQUEST_MISSING_FILTERS = "At least one filter (transactionId or startDate + endDate) must be provided.";
